@@ -15,7 +15,7 @@ const routerApi = async (app) => {
             headless: false,
             ignoreHTTPSErrors: true,
             args: ['--no-sandbox'],
-            slowMo: 100,
+            slowMo: 80,
         })
         page = await browser.newPage();
         console.log('router working');
@@ -26,10 +26,11 @@ const routerApi = async (app) => {
         //del front enviar una variable text
         const body = req.body
         const { text } = body;
-        await AmazonScrap(page, text);
-        await BuscaLibreScrapp(page, text); 
+        await page.goto('https://www.buscalibre.com.co/libros/');
+        // await AmazonScrap(page, text);
+        const data= await BuscaLibreScrapp(page, text); 
         console.log(text);
-        res.status(200).send({});
+        res.status(200).send({data});
     })
 }
 
