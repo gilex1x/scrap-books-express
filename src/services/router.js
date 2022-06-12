@@ -26,11 +26,11 @@ const routerApi = async (app) => {
         //del front enviar una variable text
         const body = req.body
         const { text } = body;
-        await page.goto('https://www.buscalibre.com.co/libros/');
-        // await AmazonScrap(page, text);
-        const data= await BuscaLibreScrapp(page, text); 
+        // await page.goto('https://www.buscalibre.com.co/libros/');
+         await AmazonScrap(page, text);
+        // await BuscaLibreScrapp(page, text);
         console.log(text);
-        res.status(200).send({data});
+        res.status(200).send({});
     })
 }
 
